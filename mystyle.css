@@ -1,17 +1,20 @@
-para{
+body{
+    background: #d47677;
+    color: #fff;
+    font-family: cursive;
+}
+
+.para{
     padding: 10px;
 }
 .error {
     color: #FF0000;
 }
-body{
-    background-color: black;
-    color: white;
-    font-family: cursive;
-}
+
 .box{
+    width: 80%;
     align-self: center;
-    background-color: darkgrey;
+    background-color: yellow;
     padding:2%;
     color:black;
     font-weight: 10px;
