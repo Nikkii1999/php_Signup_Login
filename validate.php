@@ -28,11 +28,9 @@
         if (empty($email)) {
          $emailErr = "Email is required";
         }
-        else {
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $emailErr = "Invalid email format"; 
             }
-        }
         if (empty($gender)) {
             $genderErr = "Gender is required";
         }
@@ -42,9 +40,7 @@
         if(empty($password)){
             $pwdErr="Password cannot be empty";
         }
-        if(preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/', $password)){
-            $pwdErr="password is not strong";
-        }
+        
         if(!preg_match('/^[0-9]{10}$/', $contact)){
             $contactErr="Invalid Format";
         }
@@ -96,14 +92,24 @@
                 $image="upload/" . basename($_FILES["image"]["name"]);
                 $skills= implode(", ", $skills);
                 $interests = implode(", ", $interests);
-                $sql = "INSERT INTO Details (image,name,email, password,dob,contact,address,about,gender,skill,qualification,interest,link) VALUES ('$image','$name', '$email', '$password', '$dob' ,'$contact','$address','$about','$gender','$skills','$qualification','interests','links')";
-                
-                if (mysqli_query($conn, $sql)) {
-
-                    echo "New record created successfully";
-                } 
+                $check_email_query="SELECT * from Details WHERE email='$email'";  
+                $run_query=mysqli_query($conn,$check_email_query);  
+                if(mysqli_num_rows($run_query)>0){
+                    echo "<h2 style='color:white; text-align: center'>Record Already Exists. You cannot Register Again.</h2>";
+                    echo<<<HTML
+                        <center><a href="home.php" style="color: white; font-size: 20px;">LINK TO LOGIN!</a></center>
+                        HTML;
+                }
                 else{
-                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    $sql = "INSERT INTO Details (image,name,email, password,dob,contact,address,about,gender,skill,qualification,interest,link) VALUES ('$image','$name', '$email', '$password', '$dob' ,'$contact','$address','$about','$gender','$skills','$qualification','interests','links')";
+                    
+                    if (mysqli_query($conn, $sql)) {
+
+                        echo "<h2 style='color:white; text-align: center'>New record created successfully</h2>";
+                    } 
+                    else{
+                        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    }
                 }
                 mysqli_close($conn);
 	    }

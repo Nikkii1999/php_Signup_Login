@@ -12,7 +12,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <link rel="stylesheet" type="text/css" href="form.css">
+    <!-- <<style type="text/css"> 
+    	body{
+		    background: #d47677;
+		    color: #7a7a7a;
+		    font-family: cursive;
+		}
+
+		.para{
+		    padding: 10px;
+		}
+		.error {
+		    color: #FF0000;
+		}
+
+		.box{
+		    
+		    align-self: center;
+		    background-color: #ececec;
+		    padding:2%;
+		    color:#7a7a7a;
+		    font-weight: 10px;
+		    font-family: cursive;
+		}
+		.h{
+		    text-align: center;
+
+		}
+    </style>-->
   </head>
   <body>
     <div class="container-fluid">
@@ -137,7 +165,7 @@
                 <input type="text" class="form-control"name="links"><span class = "error"><?php echo $linkErr;?></span>
             </div>
           </div>
-          <button class="btn btn-primary" type="submit" name="submit" value="Submit"> Submit </button>
+          <button class="btn btn-primary btn-lg" type="submit" name="submit" value="Submit"> Register </button>
         </div>
       </form>
     </div>
