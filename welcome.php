@@ -36,6 +36,7 @@
 		    $result = mysqli_query($conn, $check_user);
 		    if (mysqli_num_rows($result) > 0) {
 				while($row = mysqli_fetch_assoc($result)) {
+					
 					$name=$row["name"];
 		    		echo " <h1> Welcome $name </h2>" ;
 		  		} 
